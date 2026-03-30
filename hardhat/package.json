@@ -48,7 +48,7 @@
     "hardhat-gas-reporter": "^1.0.9",
     "hardhat-ignore-warnings": "^0.2.11",
     "hardhat-preprocessor": "^0.1.5",
-    "lodash": "^4.17.21",
+    "lodash": "^4.17.23",
     "mocha": "^10.1.0",
     "prettier": "^2.8.4",
     "prettier-plugin-solidity": "^1.1.2",
@@ -57,7 +57,7 @@
     "solhint": "^3.4.0",
     "solhint-plugin-prettier": "^0.0.5",
     "solidity-coverage": "0.8.12",
-    "sqlite3": "^5.1.7",
+    "sqlite3": "^6.0.1",
     "ts-generator": "^0.1.1",
     "ts-node": "^10.9.1",
     "typechain": "^8.2.0",
@@ -65,8 +65,24 @@
     "typescript-eslint": "^8.0.1",
     "web3-validator": "^2.0.6"
   },
+  "optionalDependencies": {
+    "solidity-comments-linux-x64-gnu": "0.0.2"
+  },
   "overrides": {
-    "serialize-javascript": "7.0.4"
+    "@tootallnate/once": "^3.0.1",
+    "axios": "^1.8.4",
+    "cookie": "^0.7.2",
+    "elliptic": "^6.6.1",
+    "lodash": "^4.17.23",
+    "minimatch": "^9.0.7",
+    "pbkdf2": "^3.1.5",
+    "serialize-javascript": "^7.0.5",
+    "sha.js": "^2.4.12",
+    "sqlite3": "^6.0.1",
+    "tar": "^7.5.11",
+    "tmp": "^0.2.5",
+    "undici": "^6.24.0",
+    "ws": "^7.5.10"
   },
   "files": [
     "contracts"
@@ -91,7 +107,7 @@
     "lint": "pnpm lint:sol && pnpm lint:ts && pnpm prettier:check",
     "lint:sol": "solhint --max-warnings 25 \"contracts/**/*.sol\"",
     "lint:ts": "eslint .",
-    "postinstall": "DOTENV_CONFIG_PATH=./.env.example pnpm typechain",
+    "postinstall": "cross-env DOTENV_CONFIG_PATH=./.env.example npm run typechain",
     "prettier:check": "prettier --check \"**/*.{js,json,md,sol,ts,yml}\"",
     "prettier:write": "prettier --write \"**/*.{js,json,md,sol,ts,yml}\"",
     "typechain": "cross-env TS_NODE_TRANSPILE_ONLY=true hardhat typechain",

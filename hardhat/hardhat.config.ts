@@ -19,7 +19,11 @@ extendProvider(async (provider) => {
   return newProvider;
 });
 
-dotenv.config();
+if (process.env.DOTENV_CONFIG_PATH) {
+  dotenv.config({ path: process.env.DOTENV_CONFIG_PATH });
+} else {
+  dotenv.config();
+}
 
 // Ensure that we have all the environment variables we need.
 const mnemonic: string = process.env.MNEMONIC!;
